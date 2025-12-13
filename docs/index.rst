@@ -1,0 +1,5 @@
+===========================
+sinarproject.customizations
+===========================
+
+User documentation
