@@ -19,7 +19,7 @@
   <div class="container">
       <div class="row">
           <div class="col-md-5 bg-light p-5">
-            <p class="lead">We are a civic tech initiative using open
+            <p class="lead text-start">We are a civic tech initiative using open
             technology, open data and policy analysis to systematically
             make important information public and more accessible, in
             constrained environments.</p>
@@ -47,7 +47,7 @@
                 tal:attributes="src string: ${image_url}/@@images/image/large"
                 src="..." class="card-img-top rounded-top" />
            </a>
-            <div class="card-body">
+            <div class="card-body text-start">
                     <strong tal:content="item/Title | nothing">
                         <br />
                     <small class="text-body-secondary"
@@ -66,7 +66,7 @@
   <h4 tal:condition="view/updates" class="text-start">Updates</h4>
     <div class="row row-cols-1 row-cols-md-3 g-4" id="update-cards">
       <div class="col" tal:repeat="item view/updates">
-        <div class="card h-100" >
+        <div class="card h-100">
            <a class="stretched-link" href="" tal:attributes="href item/getURL ">
            <img tal:condition="python: item.getObject().image"
                 tal:define="image_url python: item.getObject().absolute_url"
@@ -74,7 +74,7 @@
                 src="..." class="card-img-top rounded-top" />
            </a>
             <div class="card-body">
-              <h5 class="card-title" tal:content="item/Title|nothing">Card title</h5>
+              <h5 class="card-title text-start" tal:content="item/Title|nothing">Card title</h5>
             </div>
         </div>
       </div>
