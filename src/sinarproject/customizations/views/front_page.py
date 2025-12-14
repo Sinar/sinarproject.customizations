@@ -31,13 +31,12 @@ class FrontPage(BrowserView):
         items = api.content.find(portal_type='Resource',
                                  sort_on='effective',
                                  sort_order='descending',
-                                 sort_limit=3,
-                                 )[:3]
+                                 )
 
         updates = [item for item in items if item.resource_type in
                    self.update_types]
 
-        return updates
+        return updates[:3]
 
     def events(self):
 

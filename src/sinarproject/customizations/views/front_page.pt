@@ -37,7 +37,7 @@
   </div>
 
   <br />
-  <h4 tal:condition="view/events">Upcoming Events</h4>
+  <h4 tal:condition="view/events" class="text-start">Upcoming Events</h4>
   <div class="row row-cols-1 row-cols-md-3 g-3" id="event-cards">
       <div class="col" tal:repeat="item view/events">
           <div class="card h-100">
@@ -63,7 +63,7 @@
   </div>
 
   <br />
-  <h4 tal:condition="view/updates">Updates</h4>
+  <h4 tal:condition="view/updates" class="text-start">Updates</h4>
     <div class="row row-cols-1 row-cols-md-3 g-4" id="update-cards">
       <div class="col" tal:repeat="item view/updates">
         <div class="card h-100" >
