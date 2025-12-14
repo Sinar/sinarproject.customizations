@@ -30,8 +30,8 @@
           </div>
           <div class="col-md-7">
             <img class="rounded img-fluid"
-             tal:attributes="src string:${portal_url}/media/dsc04920.jpg/@@images/image-768-1220175e2120173499d7a45843f21c54.jpeg"
-            />
+                 src="https://sinarproject.org/media/dsc04920.jpg/@@images/image-768-6c735486e2618a0a0aa4d9bb976ad10b.jpeg"
+                 />
           </div>
       </div>
   </div>
