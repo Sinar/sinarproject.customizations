@@ -16,10 +16,31 @@
   <metal:content-core fill-slot="content-core">
   <metal:block define-macro="content-core">
 
-    <h5 tal:condition="view/events">Upcoming Events</h5>
-    <div class="row row-cols-1 row-cols-md-3 g-3">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-5 bg-light p-5">
+            <p class="lead">We are a civic tech initiative using open
+            technology, open data and policy analysis to systematically
+            make important information public and more accessible, in
+            constrained environments.</p>
+            <a class="btn btn-dark btn-md" href="/projects" role="button"
+               tal:attributes="href string:${portal_url}/projects">
+            Browse our Projects</a>
+
+          </div>
+          <div class="col-md-7">
+            <img class="rounded img-fluid"
+             tal:attributes="src string:${portal_url}/media/dsc04920.jpg/@@images/image-768-1220175e2120173499d7a45843f21c54.jpeg"
+            />
+          </div>
+      </div>
+  </div>
+
+  <br />
+  <h4 tal:condition="view/events">Upcoming Events</h4>
+  <div class="row row-cols-1 row-cols-md-3 g-3" id="event-cards">
       <div class="col" tal:repeat="item view/events">
-        <div class="card h-100" >
+          <div class="card h-100">
            <a class="stretched-link" href="" tal:attributes="href item/getURL ">
            <img tal:condition="python: item.getObject().image"
                 tal:define="image_url python: item.getObject().absolute_url"
@@ -39,10 +60,11 @@
             </div>
         </div>
       </div>
-    </div>
+  </div>
 
-    <h5>Updates</h5>
-    <div class="row row-cols-1 row-cols-md-3 g-4">
+  <br />
+  <h4>Updates</h4>
+    <div class="row row-cols-1 row-cols-md-3 g-4" id="update-cards">
       <div class="col" tal:repeat="item view/updates">
         <div class="card h-100" >
            <a class="stretched-link" href="" tal:attributes="href item/getURL ">
