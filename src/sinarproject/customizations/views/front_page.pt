@@ -63,7 +63,7 @@
   </div>
 
   <br />
-  <h4>Updates</h4>
+  <h4 tal:condition="view/updates">Updates</h4>
     <div class="row row-cols-1 row-cols-md-3 g-4" id="update-cards">
       <div class="col" tal:repeat="item view/updates">
         <div class="card h-100" >
