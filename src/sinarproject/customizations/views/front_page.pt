@@ -7,15 +7,6 @@
 <body>
 
   <metal:custom_title fill-slot="content-title">
-    <h1 tal:replace="structure context/@@title" />
-
-    <!-- @@title view template: -->
-    <!--
-    <h1 tal:define="title context/Title" tal:condition="title" tal:content="title">
-      Title or id
-    </h1>
-    -->
-
   </metal:custom_title>
 
   <metal:custom_description fill-slot="content-description">
@@ -25,9 +16,49 @@
   <metal:content-core fill-slot="content-core">
   <metal:block define-macro="content-core">
 
-    <h2>Main content</h2>
-    <!--<div tal:replace="view/my_custom_view_method" />-->
-    <!--<div tal:replace="context/my_custom_field" />-->
+    <h5 tal:condition="view/events">Upcoming Events</h5>
+    <div class="row row-cols-1 row-cols-md-3 g-3">
+      <div class="col" tal:repeat="item view/events">
+        <div class="card h-100" >
+           <a class="stretched-link" href="" tal:attributes="href item/getURL ">
+           <img tal:condition="python: item.getObject().image"
+                tal:define="image_url python: item.getObject().absolute_url"
+                tal:attributes="src string: ${image_url}/@@images/image/large"
+                src="..." class="card-img-top rounded-top" />
+           </a>
+            <div class="card-body">
+                    <strong tal:content="item/Title | nothing">
+                        <br />
+                    <small class="text-body-secondary"
+                        tal:content="python: plone_view.toLocalizedTime(item.start, long_format=1) ">
+                    </small><span talcondition="item/location">
+                        <br /></span><small
+                        class="text-body-secondary"
+                    tal:content="item/location|nothing"></small>
+
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <h5>Updates</h5>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <div class="col" tal:repeat="item view/updates">
+        <div class="card h-100" >
+           <a class="stretched-link" href="" tal:attributes="href item/getURL ">
+           <img tal:condition="python: item.getObject().image"
+                tal:define="image_url python: item.getObject().absolute_url"
+                tal:attributes="src string: ${image_url}/@@images/image/large"
+                src="..." class="card-img-top rounded-top" />
+           </a>
+            <div class="card-body">
+              <h5 class="card-title" tal:content="item/Title|nothing">Card title</h5>
+            </div>
+        </div>
+      </div>
+    </div>
+
+
 
   </metal:block>
   </metal:content-core>
