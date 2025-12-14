@@ -44,7 +44,7 @@
            <a class="stretched-link" href="" tal:attributes="href item/getURL ">
            <img tal:condition="python: item.getObject().image"
                 tal:define="image_url python: item.getObject().absolute_url"
-                tal:attributes="src string: ${image_url}/@@images/image/large"
+                tal:attributes="src string:${image_url}/@@images/image/preview"
                 src="..." class="card-img-top rounded-top" />
            </a>
             <div class="card-body text-start">
@@ -70,7 +70,7 @@
            <a class="stretched-link" href="" tal:attributes="href item/getURL ">
            <img tal:condition="python: item.getObject().image"
                 tal:define="image_url python: item.getObject().absolute_url"
-                tal:attributes="src string: ${image_url}/@@images/image/large"
+                tal:attributes="src string:${image_url}/@@images/image/preview"
                 src="..." class="card-img-top rounded-top" />
            </a>
             <div class="card-body">
