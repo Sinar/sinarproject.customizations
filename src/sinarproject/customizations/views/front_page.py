@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 
 # from sinarproject.customizations import _
-from Products.Five.browser import BrowserView
+from datetime import datetime
 from plone import api
+from Products.Five.browser import BrowserView
 from zope.interface import implementer
 from zope.interface import Interface
-from datetime import datetime
+
 
 # from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
