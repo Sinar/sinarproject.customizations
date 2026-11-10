@@ -10,7 +10,6 @@ from sinarproject.customizations.testing import (
 )
 from sinarproject.customizations.views.front_page import IFrontPage
 from zope.component import getMultiAdapter
-from zope.interface.interfaces import ComponentLookupError
 
 import unittest
 
@@ -31,17 +30,14 @@ class ViewsIntegrationTest(unittest.TestCase):
         )
         self.assertTrue(IFrontPage.providedBy(view))
 
-    def test_front_page_not_matching_interface(self):
-        view_found = True
-        try:
-            view = getMultiAdapter(
-                (self.portal["front-page"], self.portal.REQUEST), name="front-page"
-            )
-        except ComponentLookupError:
-            view_found = False
-        else:
-            view_found = IFrontPage.providedBy(view)
-        self.assertFalse(view_found)
+    def test_front_page_view_registered_for_all_content(self):
+        # The front-page view is registered with for="*", so it is
+        # resolvable for any content type, including the front-page
+        # document itself.
+        view = getMultiAdapter(
+            (self.portal["front-page"], self.portal.REQUEST), name="front-page"
+        )
+        self.assertTrue(IFrontPage.providedBy(view))
 
 
 class ViewsFunctionalTest(unittest.TestCase):
