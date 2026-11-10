@@ -39,6 +39,28 @@ class ViewsIntegrationTest(unittest.TestCase):
         )
         self.assertTrue(IFrontPage.providedBy(view))
 
+    def test_front_page_view_hides_byline(self):
+        # The front-page view template should not show the document byline
+        # (#section-byline), rendered by the plone.belowcontenttitle
+        # viewlet manager in the main template.
+        doc = self.portal["front-page"]
+        request = self.portal.REQUEST
+        view = getMultiAdapter((doc, request), name="front-page")
+        # ZPublisher sets request['PUBLISHED'] to the view before calling it.
+        request["PUBLISHED"] = view
+        result = view()
+        self.assertNotIn("section-byline", result)
+
+    def test_byline_still_shown_for_other_views(self):
+        # Only the front-page view suppresses the byline; other views of
+        # the same document keep it.
+        doc = self.portal["front-page"]
+        request = self.portal.REQUEST
+        other_view = getMultiAdapter((doc, request), name="view")
+        request["PUBLISHED"] = other_view
+        result = other_view()
+        self.assertIn("section-byline", result)
+
 
 class ViewsFunctionalTest(unittest.TestCase):
 

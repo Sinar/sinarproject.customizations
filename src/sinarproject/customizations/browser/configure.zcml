@@ -4,8 +4,10 @@
     xmlns:plone="http://namespaces.plone.org/plone"
     i18n_domain="sinarproject.customizations">
 
-  <!-- Set overrides folder for Just-a-Bunch-Of-Templates product -->
-  <include package="z3c.jbot" file="meta.zcml" />
+  <!-- Set overrides folder for Just-a-Bunch-Of-Templates product.
+       The full include (not just meta.zcml) is required: it installs the
+       z3c.jbot.patches runtime patches that make the overrides effective. -->
+  <include package="z3c.jbot" />
   <browser:jbot
       directory="overrides"
       layer="sinarproject.customizations.interfaces.ISinarprojectCustomizationsLayer"
